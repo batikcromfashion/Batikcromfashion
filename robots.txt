@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://batikcromfashion.com/sitemap.xml
