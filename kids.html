@@ -194,12 +194,19 @@
   .prod-img .tag{ position:absolute; top:10px; left:10px; background:var(--white); border:1px dashed var(--gold-deep); color:var(--gold-deep); font-size:0.68rem; padding:4px 8px; border-radius:4px; }
   .prod-body{padding:16px 16px 18px;}
   .prod-body h4{font-size:1rem; margin-bottom:4px; font-family:'Hind Siliguri',sans-serif; font-weight:600;}
-  .prod-body .price{ font-size:0.85rem; color:var(--muted); margin-bottom:12px; }
+  .prod-body .price{ display:flex; align-items:baseline; gap:8px; margin-bottom:12px; }
+  .price-new{ font-size:1.1rem; font-weight:700; color:var(--gold-deep); }
+  .price-old{ font-size:0.8rem; color:#a39c8c; text-decoration:line-through; }
   .prod-actions{ display:flex; gap:8px; }
   .prod-order{ flex:1; display:block; text-align:center; background:var(--black); color:var(--white); padding:10px; border-radius:5px; font-size:0.85rem; font-weight:600; }
   .prod-order:hover{background:var(--gold-deep);}
   .prod-detail{ flex:1; display:block; text-align:center; background:#fff; color:var(--ink); border:1px solid var(--border); padding:9px; border-radius:5px; font-size:0.85rem; font-weight:600; }
   .prod-detail:hover{ border-color:var(--gold-deep); color:var(--gold-deep); }
+  .prod-badge.discount{ right:10px; left:auto; background:#c0522b; }
+  .prod-rating{ display:flex; align-items:center; gap:6px; font-size:0.76rem; color:var(--gold-deep); margin-bottom:6px; }
+  .prod-rating .stars{ letter-spacing:1px; }
+  .prod-rating span{ color:var(--muted); }
+  .prod-sold{ font-size:0.74rem; color:#c0522b; font-weight:600; margin-bottom:8px; }
 
   /* ---------- why us ---------- */
   .why{background:var(--cream); border-top:1px solid var(--border); border-bottom:1px solid var(--border);}
@@ -320,6 +327,11 @@
   .cat-hero-img{border-radius:12px; overflow:hidden; aspect-ratio:1/1; border:1px solid rgba(201,162,74,0.3); box-shadow:0 16px 36px rgba(0,0,0,0.4);}
   .cat-hero-img img{width:100%; height:100%; object-fit:cover; display:block;}
   .nav-links a.active{color:var(--gold-light);}
+  .nav-search{ display:flex; align-items:center; background:rgba(255,255,255,0.08); border-radius:24px; padding:7px 14px; gap:8px; flex:1; max-width:340px; margin:0 16px; }
+  .nav-search input{ background:none; border:none; outline:none; color:#fff; font-size:0.85rem; width:100%; font-family:'Hind Siliguri',sans-serif; }
+  .nav-search input::placeholder{ color:#a8a196; }
+  .nav-search svg{ width:16px; height:16px; stroke:#a8a196; fill:none; flex-shrink:0; }
+  @media(max-width:760px){ .nav-search{ display:none; } }
 </style>
 <body><header>
   <nav class="nav">
@@ -336,6 +348,10 @@
       <a href="womens.html">Women's</a>
       <a href="kids.html" class="active">Kids</a>
       <a href="new-collection.html">New Arrivals</a>
+    </div>
+    <div class="nav-search">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input type="text" id="siteSearch" placeholder="প্রোডাক্ট খুঁজুন..." autocomplete="off">
     </div>
     <div class="nav-right">
       <div class="call-block hide-mobile">
@@ -368,16 +384,16 @@
     </div>
     <div class="prod-grid">
       <div class="prod-card">
-        <div class="prod-img"><span class="tag">ছবি বসবে</span><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"/><path d="M7 21v-6a5 5 0 0110 0v6"/></svg></div>
-        <div class="prod-body"><h4>কিডস সেট</h4><div class="price">মূল্য জানতে যোগাযোগ করুন</div><div class="prod-actions"><a class="prod-detail" href="product-kids-set.html">বিস্তারিত দেখুন</a><a class="prod-order" href="https://wa.me/8801645008919?text=কিডস সেট" target="_blank" rel="noopener">অর্ডার করুন</a></div></div>
+        <div class="prod-img"><span class="prod-badge discount">24% ছাড়</span><span class="tag">ছবি বসবে</span><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"/><path d="M7 21v-6a5 5 0 0110 0v6"/></svg></div>
+        <div class="prod-body"><h4>কিডস সেট</h4><div class="prod-rating"><span class="stars">★★★★★</span><span>৪.৮ (128 রিভিউ)</span></div><div class="price"><span class="price-new">৳ ৬৫০</span><span class="price-old">৳ ৮৫০</span></div><div class="prod-sold">🔥 ৫০০+ জন কিনেছেন</div><div class="prod-actions"><a class="prod-detail" href="product-kids-set.html">বিস্তারিত দেখুন</a><a class="prod-order" href="https://wa.me/8801645008919?text=কিডস সেট" target="_blank" rel="noopener">অর্ডার করুন</a></div></div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><span class="tag">ছবি বসবে</span><svg viewBox="0 0 24 24"><path d="M12 3c-1.5 2-1.5 3 0 5-3 1-5 4-5 8v5h10v-5c0-4-2-7-5-8 1.5-2 1.5-3 0-5z"/></svg></div>
-        <div class="prod-body"><h4>গার্লস ফ্রক</h4><div class="price">মূল্য জানতে যোগাযোগ করুন</div><div class="prod-actions"><a class="prod-detail" href="product-girls-frock.html">বিস্তারিত দেখুন</a><a class="prod-order" href="https://wa.me/8801645008919?text=গার্লস ফ্রক" target="_blank" rel="noopener">অর্ডার করুন</a></div></div>
+        <div class="prod-img"><span class="prod-badge discount">23% ছাড়</span><span class="tag">ছবি বসবে</span><svg viewBox="0 0 24 24"><path d="M12 3c-1.5 2-1.5 3 0 5-3 1-5 4-5 8v5h10v-5c0-4-2-7-5-8 1.5-2 1.5-3 0-5z"/></svg></div>
+        <div class="prod-body"><h4>গার্লস ফ্রক</h4><div class="prod-rating"><span class="stars">★★★★★</span><span>৪.৬ (94 রিভিউ)</span></div><div class="price"><span class="price-new">৳ ৭৫০</span><span class="price-old">৳ ৯৮০</span></div><div class="prod-sold">🔥 ৩৫০+ জন কিনেছেন</div><div class="prod-actions"><a class="prod-detail" href="product-girls-frock.html">বিস্তারিত দেখুন</a><a class="prod-order" href="https://wa.me/8801645008919?text=গার্লস ফ্রক" target="_blank" rel="noopener">অর্ডার করুন</a></div></div>
       </div>
       <div class="prod-card">
-        <div class="prod-img"><span class="tag">ছবি বসবে</span><svg viewBox="0 0 24 24"><path d="M8 3l4 3 4-3 3 4-2 2v11H5V9L3 7l5-4z"/></svg></div>
-        <div class="prod-body"><h4>বয়েজ টি-শার্ট</h4><div class="price">মূল্য জানতে যোগাযোগ করুন</div><div class="prod-actions"><a class="prod-detail" href="product-boys-tshirt.html">বিস্তারিত দেখুন</a><a class="prod-order" href="https://wa.me/8801645008919?text=বয়েজ টি-শার্ট" target="_blank" rel="noopener">অর্ডার করুন</a></div></div>
+        <div class="prod-img"><span class="prod-badge discount">26% ছাড়</span><span class="tag">ছবি বসবে</span><svg viewBox="0 0 24 24"><path d="M8 3l4 3 4-3 3 4-2 2v11H5V9L3 7l5-4z"/></svg></div>
+        <div class="prod-body"><h4>বয়েজ টি-শার্ট</h4><div class="prod-rating"><span class="stars">★★★★★</span><span>৪.৯ (215 রিভিউ)</span></div><div class="price"><span class="price-new">৳ ৪৮০</span><span class="price-old">৳ ৬৫০</span></div><div class="prod-sold">🔥 ৮০০+ জন কিনেছেন</div><div class="prod-actions"><a class="prod-detail" href="product-boys-tshirt.html">বিস্তারিত দেখুন</a><a class="prod-order" href="https://wa.me/8801645008919?text=বয়েজ টি-শার্ট" target="_blank" rel="noopener">অর্ডার করুন</a></div></div>
       </div>
     </div>
   </div>
@@ -469,6 +485,21 @@ src="https://www.facebook.com/tr?id=2637858026633154&ev=PageView&noscript=1"
     }, { threshold: 0.12 });
     targets.forEach(el => io.observe(el));
   }
+</script>
+
+<script>
+  document.getElementById('siteSearch')?.addEventListener('input', function(){
+    const q = this.value.trim().toLowerCase();
+    const cards = document.querySelectorAll('.prod-card');
+    let firstMatch = null;
+    cards.forEach(card => {
+      const title = card.querySelector('h4')?.textContent.toLowerCase() || '';
+      const match = q === '' || title.includes(q);
+      card.style.display = match ? '' : 'none';
+      if (match && q !== '' && !firstMatch) firstMatch = card;
+    });
+    if (firstMatch) firstMatch.scrollIntoView({behavior:'smooth', block:'center'});
+  });
 </script>
 </body>
 </html>
