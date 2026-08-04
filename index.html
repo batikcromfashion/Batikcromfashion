@@ -100,7 +100,21 @@
   .btn-wa:hover{transform:translateY(-2px);}
   .btn-wa svg{width:16px; height:16px; fill:var(--white);}
   .hide-mobile{display:flex;}
-  @media(max-width:860px){ .nav-links{display:none;} .call-block{display:none;} }
+  .hamburger-btn{ display:none; width:38px; height:38px; border-radius:8px; background:rgba(255,255,255,0.08); align-items:center; justify-content:center; border:none; cursor:pointer; flex-shrink:0; }
+  .hamburger-btn svg{ width:20px; height:20px; stroke:var(--gold-light); fill:none; stroke-width:1.8; }
+  .mobile-menu{ display:none; flex-direction:column; background:var(--black-2); border-top:1px solid rgba(201,162,74,0.15); padding:16px 24px 22px; gap:14px; }
+  .mobile-menu.open{ display:flex; }
+  .mobile-menu a{ color:#e7e2d6; font-size:0.95rem; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.06); }
+  .mobile-menu .m-call{ display:flex; align-items:center; gap:10px; color:var(--gold-light); font-size:0.92rem; padding-top:4px; }
+  .mobile-menu .m-call svg{ width:18px; height:18px; stroke:var(--gold-light); fill:none; stroke-width:1.6; }
+  .mobile-menu .m-search{ display:flex; align-items:center; background:rgba(255,255,255,0.08); border-radius:20px; padding:8px 14px; gap:8px; }
+  .mobile-menu .m-search input{ background:none; border:none; outline:none; color:#fff; font-size:0.85rem; width:100%; font-family:'Hind Siliguri',sans-serif; }
+  .mobile-menu .m-search input::placeholder{ color:#a8a196; }
+  .mobile-menu .m-search svg{ width:16px; height:16px; stroke:#a8a196; fill:none; flex-shrink:0; }
+  @media(max-width:860px){
+    .nav-links{display:none;} .call-block{display:none;} .nav-search{display:none;}
+    .hamburger-btn{display:flex;}
+  }
 
   /* ---------- hero ---------- */
   .hero{ position:relative; background:var(--black); overflow:hidden; padding:56px 0 44px; }
@@ -360,8 +374,25 @@
         <svg viewBox="0 0 24 24"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.2-1.1a7.9 7.9 0 003.85 1h0a7.94 7.94 0 007.94-7.94 7.9 7.9 0 00-2.4-5.64zM12.05 18.4a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.66.67-2.44-.16-.25a6.58 6.58 0 01-1-3.5A6.6 6.6 0 1112.05 18.4z"/></svg>
         WhatsApp
       </a>
+      <button class="hamburger-btn" id="mobileMenuBtn" aria-label="Menu">
+        <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
     </div>
   </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#collections">কালেকশন</a>
+    <a href="#products">প্রোডাক্ট</a>
+    <a href="#reviews">রিভিউ</a>
+    <a href="#contact">যোগাযোগ</a>
+    <div class="m-search">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input type="text" id="siteSearchMobile" placeholder="প্রোডাক্ট খুঁজুন..." autocomplete="off">
+    </div>
+    <a href="tel:+8801645008919" class="m-call">
+      <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .7 3a2 2 0 01-.4 2.1L8 10.3a16 16 0 006 6l1.5-1.5a2 2 0 012.1-.4c1 .4 2 .6 3 .7a2 2 0 011.4 2.1z"/></svg>
+      <b>01645-008919</b> — কল করুন
+    </a>
+  </div>
 </header>
 
 <section class="hero">
@@ -790,7 +821,36 @@ src="https://www.facebook.com/tr?id=2637858026633154&ev=PageView&noscript=1"
     targets.forEach(el => io.observe(el));
   }
 
-  // Live product search
+  // Mobile hamburger menu toggle
+  const menuBtn = document.getElementById('mobileMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', function(){
+      mobileMenu.classList.toggle('open');
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+  }
+  const mobileSearchInput = document.getElementById('siteSearchMobile');
+  if (mobileSearchInput) {
+    mobileSearchInput.addEventListener('input', function(){
+      const q = this.value.trim().toLowerCase();
+      const cards = document.querySelectorAll('.prod-card');
+      let firstMatch = null;
+      cards.forEach(card => {
+        const title = card.querySelector('h4')?.textContent.toLowerCase() || '';
+        const match = q === '' || title.includes(q);
+        card.style.display = match ? '' : 'none';
+        if (match && q !== '' && !firstMatch) firstMatch = card;
+      });
+      if (firstMatch) {
+        mobileMenu.classList.remove('open');
+        firstMatch.scrollIntoView({behavior:'smooth', block:'center'});
+      }
+    });
+  }
+
   const searchInput = document.getElementById('siteSearch');
   if (searchInput) {
     searchInput.addEventListener('input', function(){
