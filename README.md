@@ -15,17 +15,10 @@
 ## যোগাযোগ
 📞 01645-008919 · ✉️ batikcromfashion@gmail.com · 📘 [Facebook](https://www.facebook.com/batikcromfashion)
 
+### ডিলার/এজেন্ট হোন
+- [ড্রপশিপিং পলিসি ও কমিশন](https://batikcromfashion.github.io/Batikcromfashion/dropship.html)
+- [এজেন্ট চুক্তিপত্র](https://batikcromfashion.github.io/Batikcromfashion/dropship-agreement.html)
+- [পার্টনার রিসোর্স সেন্টার](https://batikcromfashion.github.io/Batikcromfashion/partner-resources.html)
+
 ---
 Style For Everyone.
-
----
-
-### ডিলার ও এজেন্ট প্রোগ্রাম 🤝
-
-আমাদের সাথে বিজনেস করতে চান? জয়েন করুন!
-
-- **[ড্রপশিপিং পলিসি ও কমিশন](dropship.html)**  
-  এজেন্ট: MRP তে 15-20% কমিশন | ডিলার: MOQ 10 পিস, 25-30% ছাড়
-
-- **[এজেন্ট চুক্তিপত্র](dropship-agreement.html)**  
-  প্রিন্টযোগ্য Agreement ফর্ম - সাইন করে আমাদের কাছে পাঠান

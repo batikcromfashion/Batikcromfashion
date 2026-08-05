@@ -202,8 +202,24 @@
 
     <h2 style="margin-top:32px;">অর্ডার করতে চান?</h2>
     <p>সরাসরি অর্ডার করতে আমাদের <a class="inline-link" href="index.html#contact">হোমপেজের অর্ডার ফর্ম</a> ব্যবহার করুন অথবা WhatsApp-এ মেসেজ পাঠান — আমরা দ্রুত সাড়া দেব।</p>
+
+    <h2 style="margin-top:32px;">QR কোড স্ক্যান করুন</h2>
+    <p>ভিজিটিং কার্ড, প্যাকেজিং বা পোস্টারে ব্যবহারের জন্য — স্ক্যান করলেই সরাসরি ওয়েবসাইটে পৌঁছে যাবেন।</p>
+    <div id="siteQR" style="margin:16px 0; padding:16px; background:#fff; display:inline-block; border:1px solid var(--border); border-radius:10px;"></div>
+    <p style="font-size:0.8rem; color:var(--muted);">স্ক্রিনশট নিয়ে বা ডান-ক্লিক করে ছবি হিসেবে সেভ করে নিতে পারেন।</p>
   </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+  new QRCode(document.getElementById("siteQR"), {
+    text: "https://batikcromfashion.github.io/Batikcromfashion/",
+    width: 160,
+    height: 160,
+    colorDark: "#111111",
+    colorLight: "#ffffff"
+  });
+</script>
 
 <footer>
   <div class="wrap">
@@ -243,6 +259,9 @@
           <li><a href="privacy-policy.html">Privacy Policy</a></li>
           <li><a href="terms-and-conditions.html">Terms & Conditions</a></li>
           <li><a href="return-policy.html">Return Policy</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="shipping-info.html">ডেলিভারি তথ্য</a></li>
+          <li><a href="size-guide.html">সাইজ গাইড</a></li>
         </ul>
       </div>
     </div>
