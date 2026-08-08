@@ -146,38 +146,6 @@
   .btn-outline-dropship{ background:transparent; border:1px solid rgba(233,205,139,0.5); color:var(--gold-light); border-radius:6px; padding:12px 22px; font-size:0.85rem; }
   .btn-outline-dropship:hover{ background:rgba(233,205,139,0.08); }
   .btn-wa-lg:hover{ transform:translateY(-2px); }
-
-  /* ---------- partner promo banner ---------- */
-  @keyframes partnerGlow{
-    0%,100%{ box-shadow:0 0 0 0 rgba(37,211,102,0.35); }
-    50%{ box-shadow:0 0 0 10px rgba(37,211,102,0); }
-  }
-  .partner-banner{
-    display:flex; align-items:center; gap:16px; flex-wrap:wrap;
-    margin-top:22px; padding:16px 20px; border-radius:12px;
-    background:linear-gradient(135deg, rgba(37,211,102,0.14), rgba(201,162,74,0.10));
-    border:1px solid rgba(37,211,102,0.35);
-    animation:partnerGlow 2.6s ease-in-out infinite;
-  }
-  .partner-banner .pb-badge{
-    background:#25D366; color:#fff; font-size:0.68rem; font-weight:700;
-    padding:4px 10px; border-radius:20px; letter-spacing:0.5px; white-space:nowrap;
-  }
-  .partner-banner .pb-text{ flex:1; min-width:200px; }
-  .partner-banner .pb-text strong{ color:var(--gold-light); font-size:0.95rem; display:block; margin-bottom:2px; }
-  .partner-banner .pb-text span{ color:#c9c4b6; font-size:0.8rem; }
-  .partner-banner .pb-btn{
-    background:linear-gradient(135deg, var(--gold-light), var(--gold)); color:var(--black);
-    padding:10px 18px; border-radius:6px; font-weight:700; font-size:0.83rem; white-space:nowrap;
-  }
-  .partner-banner .pb-btn:hover{ transform:translateY(-2px); }
-  .partner-banner .pb-links{ display:flex; gap:8px; flex-wrap:wrap; }
-  .partner-banner .pb-link-sm{
-    background:rgba(255,255,255,0.08); border:1px solid rgba(233,205,139,0.4); color:var(--gold-light);
-    padding:8px 14px; border-radius:6px; font-weight:600; font-size:0.78rem; white-space:nowrap;
-  }
-  .partner-banner .pb-link-sm:hover{ background:rgba(233,205,139,0.12); }
-  @media(max-width:480px){ .partner-banner{ flex-direction:column; align-items:flex-start; } .partner-banner .pb-links{ width:100%; } .partner-banner .pb-link-sm{ flex:1; text-align:center; } }
   .badges{display:flex; flex-wrap:wrap; gap:22px;}
   .badge-item{display:flex; align-items:center; gap:8px; font-size:0.82rem; color:#cfc9ba;}
   .badge-item svg{width:18px; height:18px; stroke:var(--gold-light); fill:none; stroke-width:1.6; flex-shrink:0;}
@@ -389,6 +357,84 @@
 </head>
 <body>
 
+<!-- ===== BATIKCROMFASHION WELCOME BANNER ===== -->
+<div class="bcf-welcome-banner">
+  <span class="bcf-sparkle" style="left:5%;  animation-delay:0s;">✨</span>
+  <span class="bcf-sparkle" style="left:15%; animation-delay:0.4s;">⭐</span>
+  <span class="bcf-sparkle" style="left:30%; animation-delay:0.8s;">✨</span>
+  <span class="bcf-sparkle" style="left:70%; animation-delay:0.3s;">⭐</span>
+  <span class="bcf-sparkle" style="left:85%; animation-delay:0.7s;">✨</span>
+  <span class="bcf-sparkle" style="left:95%; animation-delay:1s;">⭐</span>
+
+  <p class="bcf-welcome-text">
+    Welcome To My <span class="bcf-brand">Batikcromfashion</span><br>
+    <span class="bcf-plain">Thanks,,</span> <span class="bcf-emoji">❤️🇧🇩🫶</span>
+  </p>
+</div>
+
+<style>
+.bcf-welcome-banner{
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+  padding:12px 16px;
+  background:linear-gradient(270deg,#ff0844,#ffb199,#0f2027,#ff0844);
+  background-size:600% 600%;
+  animation:bcfBgMove 6s ease infinite;
+}
+@keyframes bcfBgMove{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+.bcf-welcome-text{
+  margin:0;
+  font-size:1.6rem;
+  line-height:1.4;
+  font-weight:800;
+  letter-spacing:.3px;
+  background:linear-gradient(90deg,#fff,#ffe259,#fff,#ffe259,#fff);
+  background-size:400% auto;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:bcfShine 3s linear infinite;
+  text-shadow:0 0 12px rgba(255,255,255,.25);
+}
+@keyframes bcfShine{ to{background-position:400% center} }
+.bcf-brand{
+  font-weight:800;
+  color:#fff;
+  -webkit-text-fill-color:#fff;
+  text-shadow:0 0 6px #fff,0 0 16px #ff0844,0 0 28px #ffb199;
+}
+.bcf-plain{
+  color:#fff;
+  -webkit-text-fill-color:#fff;
+  text-shadow:0 0 6px #fff,0 0 14px #ff0844;
+}
+.bcf-emoji{
+  -webkit-text-fill-color:initial;
+  background:none;
+  filter:none;
+  text-shadow:none;
+}
+.bcf-sparkle{
+  position:absolute;
+  top:6px;
+  font-size:.9rem;
+  opacity:0;
+  animation:bcfTwinkle 1.6s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes bcfTwinkle{
+  0%,100%{opacity:0;transform:scale(.4) rotate(0deg)}
+  50%{opacity:1;transform:scale(1.1) rotate(180deg)}
+}
+@media (max-width:480px){ .bcf-welcome-text{font-size:1.25rem} }
+</style>
+<!-- ===== END BANNER ===== -->
+
 <header>
   <nav class="nav">
     <div class="brand-block">
@@ -453,14 +499,6 @@
         <div class="badge-item"><svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.5 6 .8-4.4 4.1 1.1 6-5.3-2.9-5.3 2.9 1.1-6-4.4-4.1 6-.8z"/></svg>প্রিমিয়াম কোয়ালিটি</div>
         <div class="badge-item"><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg>সারা বাংলাদেশে ডেলিভারি</div>
         <div class="badge-item"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/></svg>ক্যাশ অন ডেলিভারি</div>
-      </div>
-      <div class="partner-banner">
-        <span class="pb-badge">🔥 নতুন সুযোগ</span>
-        <span class="pb-text"><strong>পার্টনার হয়ে বাড়তি আয় করুন</strong><span>স্টক দিন বা ডেলিভারিতে বিক্রি করুন — দুই উপায়েই কমিশন/লাভ আপনার</span></span>
-        <span class="pb-links">
-          <a href="stock-partner.html" class="pb-link-sm">📦 স্টক পার্টনার (৫০-৫০)</a>
-          <a href="delivery-partner.html" class="pb-link-sm">🛵 ডেলিভারি পার্টনার (৫-১০%)</a>
-        </span>
       </div>
     </div>
     <div class="hero-visual" style="padding:0;">
