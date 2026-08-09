@@ -81,6 +81,11 @@
   .nav{ display:flex; align-items:center; justify-content:space-between; padding:12px 24px; max-width:var(--maxw); margin:0 auto; gap:20px; }
   .brand-block{display:flex; align-items:center; gap:10px; flex-shrink:0;}
   .brand-logo{width:40px; height:40px; border-radius:50%; overflow:hidden; border:1px solid var(--gold); flex-shrink:0;}
+  @keyframes logoGlowPulse{
+    0%,100%{ box-shadow:0 0 0 0 rgba(201,162,74,0.55); }
+    50%{ box-shadow:0 0 12px 4px rgba(201,162,74,0.55); }
+  }
+  .nav .brand-logo{ animation: logoGlowPulse 3.2s ease-in-out infinite; }
   .brand-logo img{width:100%; height:100%; object-fit:cover;}
   .brand-text{display:flex; flex-direction:column; line-height:1.2;}
   .brand-text .bn{font-family:'Tiro Bangla', serif; font-size:1.08rem; color:var(--gold-light);}
@@ -135,20 +140,79 @@
   }
   .hero-grid{ position:relative; z-index:2; display:grid; grid-template-columns:1fr 0.95fr; gap:44px; align-items:center; }
   @media(max-width:900px){ .hero-grid{grid-template-columns:1fr;} }
-  .eyebrow{ font-size:0.98rem; color:var(--gold-light); margin-bottom:6px; font-weight:500;}
-  .hero h1{ font-size:clamp(2.1rem, 5vw, 3.1rem); line-height:1.2; color:var(--gold-light); margin-bottom:16px; }
-  .hero p.lede{ color:#d8d3c6; font-size:1rem; max-width:46ch; margin-bottom:24px; }
+  @keyframes eyebrowSlideIn{
+    from{ opacity:0; transform:translateX(-18px); }
+    to{ opacity:1; transform:translateX(0); }
+  }
+  @keyframes textSparkle{
+    0%,100%{ text-shadow:0 0 4px rgba(233,205,139,0.15); }
+    50%{ text-shadow:0 0 12px rgba(233,205,139,0.7), 0 0 22px rgba(255,255,255,0.3); }
+  }
+  .eyebrow{ font-size:0.98rem; color:var(--gold-light); margin-bottom:6px; font-weight:500; animation:eyebrowSlideIn 0.8s ease-out both, textSparkle 2.2s ease-in-out infinite;}
+  @keyframes heroTitleShine{
+    0%{ background-position:0% center; }
+    100%{ background-position:200% center; }
+  }
+  .hero h1{
+    font-size:clamp(2.1rem, 5vw, 3.1rem); line-height:1.2; margin-bottom:16px;
+    background:linear-gradient(90deg, var(--gold-light), #fff8e6, var(--gold), var(--gold-light));
+    background-size:300% auto; -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+    animation:heroTitleShine 4.5s linear infinite;
+  }
+  @keyframes ledeFadeUp{
+    from{ opacity:0; transform:translateY(14px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+  .hero p.lede{ color:#d8d3c6; font-size:1rem; max-width:46ch; margin-bottom:24px; animation:ledeFadeUp 0.9s ease-out 0.2s both, textSparkle 2.5s ease-in-out infinite 0.3s; }
   .hero-ctas{display:flex; flex-wrap:wrap; gap:14px; margin-bottom:28px;}
   .btn{ display:inline-flex; align-items:center; gap:8px; padding:13px 24px; border-radius:6px; font-size:0.92rem; font-weight:600; transition:transform .2s ease, box-shadow .2s ease; }
-  .btn-gold{ background:linear-gradient(135deg, var(--gold-light), var(--gold)); color:var(--black); }
+  .btn-gold{ background:linear-gradient(135deg, var(--gold-light), var(--gold)); color:var(--black); position:relative; overflow:hidden; }
   .btn-gold:hover{ transform:translateY(-2px); box-shadow:0 8px 22px rgba(201,162,74,0.3); }
-  .btn-wa-lg{ background:#25D366; color:var(--white); border-radius:6px; padding:13px 24px; }
-  .btn-outline-dropship{ background:transparent; border:1px solid rgba(233,205,139,0.5); color:var(--gold-light); border-radius:6px; padding:12px 22px; font-size:0.85rem; }
+  @keyframes btnGoldShimmer{
+    0%{ left:-60%; }
+    60%,100%{ left:130%; }
+  }
+  .btn-gold::after{
+    content:""; position:absolute; top:0; left:-60%; width:35%; height:100%;
+    background:linear-gradient(120deg, transparent, rgba(255,255,255,0.65), transparent);
+    transform:skewX(-20deg); animation:btnGoldShimmer 2.6s ease-in-out infinite;
+  }
+  @keyframes waWiggle{
+    0%,100%{ transform:rotate(0deg); }
+    25%{ transform:rotate(-2.5deg); }
+    75%{ transform:rotate(2.5deg); }
+  }
+  .btn-wa-lg{ background:#25D366; color:var(--white); border-radius:6px; padding:13px 24px; animation:waWiggle 2.4s ease-in-out infinite; transform-origin:center; }
+  @keyframes dropshipBorderPulse{
+    0%,100%{ box-shadow:0 0 0 0 rgba(233,205,139,0); border-color:rgba(233,205,139,0.5); }
+    50%{ box-shadow:0 0 0 6px rgba(233,205,139,0.14); border-color:rgba(233,205,139,1); }
+  }
+  .btn-outline-dropship{ background:transparent; border:1px solid rgba(233,205,139,0.5); color:var(--gold-light); border-radius:6px; padding:12px 22px; font-size:0.85rem; animation:dropshipBorderPulse 2.6s ease-in-out infinite; }
   .btn-outline-dropship:hover{ background:rgba(233,205,139,0.08); }
   .btn-wa-lg:hover{ transform:translateY(-2px); }
   .badges{display:flex; flex-wrap:wrap; gap:22px;}
   .badge-item{display:flex; align-items:center; gap:8px; font-size:0.82rem; color:#cfc9ba;}
   .badge-item svg{width:18px; height:18px; stroke:var(--gold-light); fill:none; stroke-width:1.6; flex-shrink:0;}
+  @keyframes badgeStarTwinkle{
+    0%,100%{ transform:scale(1) rotate(0deg); opacity:1; }
+    50%{ transform:scale(1.3) rotate(18deg); opacity:0.65; }
+  }
+  @keyframes badgeTruckDrive{
+    0%,100%{ transform:translateX(0); }
+    50%{ transform:translateX(4px); }
+  }
+  @keyframes badgeCodFlip{
+    0%,100%{ transform:rotateY(0deg); }
+    50%{ transform:rotateY(180deg); }
+  }
+  @keyframes badgeExchangeSpin{
+    from{ transform:rotate(0deg); }
+    to{ transform:rotate(360deg); }
+  }
+  .badges .badge-item:nth-child(1) svg{ animation:badgeStarTwinkle 2s ease-in-out infinite; }
+  .badges .badge-item:nth-child(2) svg{ animation:badgeTruckDrive 1.5s ease-in-out infinite; }
+  .badges .badge-item:nth-child(3) svg{ animation:badgeCodFlip 2.6s ease-in-out infinite; }
+  .badges .badge-item:nth-child(4) svg{ animation:badgeExchangeSpin 2.8s linear infinite; }
 
   .hero-visual{
     position:relative; aspect-ratio:4/3; border-radius:10px; overflow:hidden;
@@ -217,6 +281,11 @@
   .nav-search input::placeholder{ color:#a8a196; }
   .nav-search svg{ width:16px; height:16px; stroke:#a8a196; fill:none; flex-shrink:0; }
   @media(max-width:760px){ .nav-search{ display:none; } }
+  .mobile-search-bar{ display:none; align-items:center; gap:6px; background:rgba(255,255,255,0.08); border-radius:16px; padding:6px 12px; margin:2px 24px 0; }
+  .mobile-search-bar input{ background:none; border:none; outline:none; color:#fff; font-size:0.78rem; width:100%; font-family:'Hind Siliguri',sans-serif; }
+  .mobile-search-bar input::placeholder{ color:#a8a196; }
+  .mobile-search-bar svg{ width:14px; height:14px; stroke:#a8a196; fill:none; flex-shrink:0; }
+  @media(max-width:760px){ .mobile-search-bar{ display:flex; } .hero{ padding-top:18px; } }
   .offer-strip{ background:var(--black); color:#fff; text-align:center; padding:10px 16px; font-size:0.85rem; display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; }
   .offer-strip b{ color:var(--gold-light); }
   .offer-strip .cd{ background:rgba(255,255,255,0.12); padding:4px 10px; border-radius:6px; font-family:monospace; font-weight:700; letter-spacing:1px; }
@@ -468,6 +537,10 @@
       </button>
     </div>
   </nav>
+  <div class="mobile-search-bar">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+    <input type="text" id="siteSearchTop" placeholder="প্রোডাক্ট খুঁজুন..." autocomplete="off">
+  </div>
   <div class="mobile-menu" id="mobileMenu">
     <a href="#collections">কালেকশন</a>
     <a href="#products">প্রোডাক্ট</a>
@@ -499,6 +572,7 @@
         <div class="badge-item"><svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.5 6 .8-4.4 4.1 1.1 6-5.3-2.9-5.3 2.9 1.1-6-4.4-4.1 6-.8z"/></svg>প্রিমিয়াম কোয়ালিটি</div>
         <div class="badge-item"><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg>সারা বাংলাদেশে ডেলিভারি</div>
         <div class="badge-item"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/></svg>ক্যাশ অন ডেলিভারি</div>
+        <div class="badge-item"><svg viewBox="0 0 24 24"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 014-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>সহজ এক্সচেঞ্জ</div>
       </div>
     </div>
     <div class="hero-visual" style="padding:0;">
