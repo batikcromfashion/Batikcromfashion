@@ -355,6 +355,91 @@
   .test-loc{font-size:0.74rem; color:var(--muted);}
   .test-card p{font-size:0.86rem; color:var(--muted); font-style:italic;}
 
+
+
+  /* ---------- google review ---------- */
+  .google-review-section{
+    margin-top:42px;
+    padding:0 0 10px;
+  }
+  .google-review-card{
+    position:relative;
+    max-width:760px;
+    margin:0 auto;
+    padding:38px 28px;
+    text-align:center;
+    background:linear-gradient(145deg,#fffdf8,#f7f2e8);
+    border:1px solid rgba(201,162,74,0.42);
+    border-radius:18px;
+    box-shadow:0 14px 34px rgba(0,0,0,0.08);
+    overflow:hidden;
+  }
+  .google-review-card::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0; height:4px;
+    background:linear-gradient(90deg,var(--gold-deep),var(--gold-light),var(--gold-deep));
+  }
+  .google-review-icon{
+    width:58px; height:58px;
+    margin:0 auto 12px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--white);
+    border:1px solid var(--gold);
+    font-size:29px;
+    box-shadow:0 6px 18px rgba(201,162,74,0.16);
+  }
+  .google-review-card h3{
+    font-size:clamp(1.35rem,3vw,1.75rem);
+    color:var(--ink);
+    margin-bottom:8px;
+  }
+  .google-review-card p{
+    max-width:590px;
+    margin:0 auto;
+    color:var(--muted);
+    font-size:.92rem;
+    line-height:1.8;
+  }
+  .google-review-stars{
+    margin:16px 0 18px;
+    color:#e3a600;
+    font-size:1.55rem;
+    letter-spacing:4px;
+    line-height:1;
+  }
+  .google-review-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:13px 25px;
+    border-radius:30px;
+    background:linear-gradient(135deg,#1a73e8,#1557b0);
+    color:#fff;
+    font-family:'Hind Siliguri',sans-serif;
+    font-size:.92rem;
+    font-weight:700;
+    box-shadow:0 8px 20px rgba(26,115,232,.22);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .google-review-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 25px rgba(26,115,232,.28);
+  }
+  .google-review-note{
+    display:block;
+    margin-top:14px;
+    color:#777064;
+    font-size:.76rem;
+  }
+  @media(max-width:560px){
+    .google-review-section{margin-top:30px;}
+    .google-review-card{padding:30px 18px;}
+    .google-review-btn{width:100%; max-width:300px;}
+  }
+
   /* ---------- order + contact ---------- */
   .order-section{background:var(--black); color:var(--white);}
   .order-grid{display:grid; grid-template-columns:1.2fr 1fr; gap:0; border-radius:10px; overflow:hidden; border:1px solid rgba(201,162,74,0.25);}
@@ -810,6 +895,28 @@
       <div class="test-card">
         <div class="test-top"><div class="test-avatar"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg></div><div><div class="test-name">[কাস্টমারের নাম]</div><div class="test-loc">[এলাকা]</div></div></div>
         <p>"[এখানে আসল কাস্টমার রিভিউ বসবে]"</p>
+      </div>
+    </div>
+
+
+    <!-- Google Review CTA -->
+    <div class="google-review-section" aria-label="Google Customer Review">
+      <div class="google-review-card">
+        <div class="google-review-icon">⭐</div>
+        <h3>আপনার মতামত আমাদের জন্য গুরুত্বপূর্ণ ❤️</h3>
+        <p>
+          Batikcromfashion থেকে আপনার কেনাকাটার অভিজ্ঞতা কেমন হয়েছে?
+          আপনার সত্যিকারের মতামত আমাদের আরও ভালো করতে সাহায্য করবে।
+        </p>
+        <div class="google-review-stars" aria-label="5 stars">★★★★★</div>
+        <a
+          href="https://g.page/r/CWdSJkL0SKxeEBM/review"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="google-review-btn">
+          ⭐ Google-এ Review দিন
+        </a>
+        <small class="google-review-note">আপনার মূল্যবান মতামতের জন্য ধন্যবাদ ❤️</small>
       </div>
     </div>
   </div>
