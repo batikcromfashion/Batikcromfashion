@@ -54,8 +54,16 @@
   .wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px;}
 
   header{position:sticky; top:0; z-index:50; background:var(--black);}
-  .nav{display:flex; align-items:center; justify-content:space-between; padding:12px 20px; max-width:var(--maxw); margin:0 auto; gap:16px;}
-  .brand-block{display:flex; align-items:center; gap:10px;}
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:12px 20px; max-width:var(--maxw); margin:0 auto; gap:10px; flex-wrap:nowrap;}
+  .brand-block{display:flex; align-items:center; gap:10px; min-width:0; flex:1 1 auto; overflow:hidden;}
+  .brand-text{min-width:0; overflow:hidden;}
+  .brand-text .bn{white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:block; max-width:100%;}
+  @media(max-width:420px){
+    .nav{padding:10px 12px; gap:6px;}
+    .brand-text .en{display:none;}
+    .btn-wa-nav{padding:8px 10px; font-size:0.72rem; white-space:nowrap; flex-shrink:0;}
+    .brand-text .bn{font-size:0.92rem;}
+  }
   .brand-logo{width:38px; height:38px; border-radius:50%; overflow:hidden; border:1px solid var(--gold);}
   .brand-logo img{width:100%; height:100%; object-fit:cover;}
   .brand-text .bn{font-family:'Tiro Bangla', serif; font-size:1.05rem; color:var(--gold-light);}
