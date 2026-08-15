@@ -259,9 +259,15 @@
     to{ opacity:1; transform:translateY(0); }
   }
   .hero p.lede{ color:#d8d3c6; font-size:1rem; max-width:46ch; margin-bottom:24px; animation:ledeFadeUp 0.9s ease-out 0.2s both, textSparkle 2.5s ease-in-out infinite 0.3s; }
-  .hero-ctas{display:flex; flex-wrap:wrap; gap:14px; margin-bottom:28px;}
-  .btn{ display:inline-flex; align-items:center; gap:8px; padding:13px 24px; border-radius:6px; font-size:0.92rem; font-weight:600; transition:transform .2s ease, box-shadow .2s ease; }
-  .btn-gold{ background:linear-gradient(135deg, var(--gold-light), var(--gold)); color:var(--black); position:relative; overflow:hidden; }
+  .hero-ctas{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+    margin-bottom:28px;
+    align-items:stretch;
+  }
+  .btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:11px 14px; border-radius:9px; font-size:0.82rem; font-weight:600; transition:transform .2s ease, box-shadow .2s ease; text-align:center; }
+  .btn-gold{ background:linear-gradient(135deg, var(--gold-light), var(--gold)); color:var(--black); position:relative; overflow:hidden; min-height:58px; }
   .btn-gold:hover{ transform:translateY(-2px); box-shadow:0 8px 22px rgba(201,162,74,0.3); }
   @keyframes btnGoldShimmer{
     0%{ left:-60%; }
@@ -274,17 +280,77 @@
   }
   @keyframes waWiggle{
     0%,100%{ transform:rotate(0deg); }
-    25%{ transform:rotate(-2.5deg); }
-    75%{ transform:rotate(2.5deg); }
+    25%{ transform:rotate(-1.5deg); }
+    75%{ transform:rotate(1.5deg); }
   }
-  .btn-wa-lg{ background:#25D366; color:var(--white); border-radius:6px; padding:13px 24px; animation:waWiggle 2.4s ease-in-out infinite; transform-origin:center; }
+  .btn-wa-lg{ background:#25D366; color:var(--white); border-radius:9px; padding:11px 12px; min-height:58px; font-size:.78rem; animation:waWiggle 2.4s ease-in-out infinite; transform-origin:center; }
   @keyframes dropshipBorderPulse{
     0%,100%{ box-shadow:0 0 0 0 rgba(233,205,139,0); border-color:rgba(233,205,139,0.5); }
     50%{ box-shadow:0 0 0 6px rgba(233,205,139,0.14); border-color:rgba(233,205,139,1); }
   }
-  .btn-outline-dropship{ background:transparent; border:1px solid rgba(233,205,139,0.5); color:var(--gold-light); border-radius:6px; padding:12px 22px; font-size:0.85rem; animation:dropshipBorderPulse 2.6s ease-in-out infinite; }
+  .btn-outline-dropship{
+    grid-column:1 / -1; background:transparent; border:1px solid rgba(233,205,139,0.5); color:var(--gold-light);
+    border-radius:9px; padding:11px 14px; font-size:0.78rem; min-height:48px; animation:dropshipBorderPulse 2.6s ease-in-out infinite;
+  }
   .btn-outline-dropship:hover{ background:rgba(233,205,139,0.08); }
   .btn-wa-lg:hover{ transform:translateY(-2px); }
+
+  /* TikTok & Instagram — medium buttons beside the order button */
+  @keyframes tiktokGlowPulse{
+    0%,100%{ box-shadow:0 0 0 0 rgba(37,244,238,0.45), 0 0 0 0 rgba(254,44,85,0.35); }
+    50%{ box-shadow:0 0 12px 3px rgba(37,244,238,0.45), 0 0 20px 6px rgba(254,44,85,0.28); }
+  }
+  @keyframes tiktokLiquidShift{
+    0%,100%{ background-position:0% 50%; transform:translateY(0) rotate(0deg); }
+    25%{ background-position:100% 20%; transform:translateY(-1px) rotate(-0.5deg); }
+    50%{ background-position:100% 80%; transform:translateY(0) rotate(0.5deg); }
+    75%{ background-position:0% 100%; transform:translateY(-1px) rotate(-0.3deg); }
+  }
+  .btn-tiktok{
+    display:inline-flex; align-items:center; gap:9px;
+    background:linear-gradient(120deg,#25f4ee 0%,#6c5ce7 45%,#fe2c55 100%);
+    background-size:220% 220%;
+    color:var(--white);
+    border:1px solid rgba(255,255,255,0.15);
+    padding:9px 10px; border-radius:9px; font-size:0.78rem; min-height:58px; font-weight:600;
+    white-space:nowrap;
+    transition:transform .2s ease, box-shadow .2s ease;
+    animation: tiktokGlowPulse 2.4s ease-in-out infinite, tiktokLiquidShift 4.8s ease-in-out infinite;
+  }
+  .btn-tiktok:hover{ transform:translateY(-2px); }
+  .btn-tiktok svg{ width:18px; height:18px; fill:var(--white); flex-shrink:0; }
+
+  @keyframes igGradientShift{
+    0%,100%{ background-position:0% 50%; }
+    50%{ background-position:100% 50%; }
+  }
+  .btn-instagram{
+    display:inline-flex; align-items:center; gap:9px;
+    background:linear-gradient(90deg,#f9ce34,#ee2a7b,#6228d7,#f9ce34);
+    background-size:300% 300%;
+    color:var(--white);
+    padding:9px 10px; border-radius:9px; font-size:0.78rem; min-height:58px; font-weight:600;
+    white-space:nowrap;
+    transition:transform .2s ease, box-shadow .2s ease;
+    animation: igGradientShift 3.2s ease-in-out infinite;
+  }
+  .btn-instagram:hover{ transform:translateY(-2px); box-shadow:0 8px 20px rgba(238,42,123,0.35); }
+  .btn-instagram svg{ width:18px; height:18px; fill:var(--white); flex-shrink:0; }
+
+  .btn-tiktok .social-btn-text, .btn-instagram .social-btn-text{
+    display:flex; flex-direction:column; align-items:flex-start; justify-content:center; line-height:1.05;
+  }
+  .btn-tiktok .social-btn-text b, .btn-instagram .social-btn-text b{ font-size:0.74rem; font-weight:700; }
+  .btn-tiktok .social-btn-text small, .btn-instagram .social-btn-text small{ font-size:0.56rem; font-weight:500; opacity:.9; margin-top:2px; letter-spacing:.15px; }
+  @media(max-width:480px){
+    .hero-ctas{grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px;}
+    .btn-gold,.btn-tiktok,.btn-instagram,.btn-wa-lg{min-height:56px; padding:8px 7px;}
+    .btn-tiktok,.btn-instagram{gap:6px;}
+    .btn-tiktok svg,.btn-instagram svg{width:16px;height:16px;}
+    .btn-tiktok .social-btn-text b,.btn-instagram .social-btn-text b{font-size:.68rem;}
+    .btn-tiktok .social-btn-text small,.btn-instagram .social-btn-text small{font-size:.5rem;}
+    .btn-wa-lg{font-size:.68rem;}
+  }
   .badges{display:flex; flex-wrap:wrap; gap:22px;}
   .badge-item{display:flex; align-items:center; gap:8px; font-size:0.82rem; color:#cfc9ba;}
   .badge-item svg{width:18px; height:18px; stroke:var(--gold-light); fill:none; stroke-width:1.6; flex-shrink:0;}
@@ -842,8 +908,16 @@
       <p class="lede">পুরুষ, মহিলা ও শিশুদের প্রিমিয়াম পোশাক, সাশ্রয়ী দামে, সারা বাংলাদেশে হোম ডেলিভারি।</p>
       <div class="hero-ctas">
         <a href="#products" class="btn btn-gold">এখনই অর্ডার করুন</a>
+        <a href="https://tiktok.com/@batikcromfashion" class="btn-tiktok" target="_blank" rel="noopener" aria-label="TikTok Account batikcromfashion">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 5.8c-.9-.9-1.4-2.2-1.4-3.5h-3.1v13.1c0 1.4-1.1 2.6-2.6 2.6-1.4 0-2.6-1.1-2.6-2.6 0-1.4 1.1-2.6 2.6-2.6.3 0 .6 0 .8.1V9.6c-.3 0-.5-.1-.8-.1-3.2 0-5.7 2.6-5.7 5.7S6.7 21 9.9 21s5.7-2.6 5.7-5.7V9.1c1.2.9 2.7 1.4 4.3 1.4V7.4c-1.3 0-2.5-.5-3.3-1.6z"/></svg>
+          <span class="social-btn-text"><b>TikTok Account</b><small>batikcromfashion</small></span>
+        </a>
         <a href="https://wa.me/8801645008919" class="btn btn-wa-lg" target="_blank" rel="noopener">WhatsApp-এ যোগাযোগ করুন</a>
-        <a href="dropship.html" class="btn btn-outline-dropship">🤝 ড্রপশিপিং / পাইকারি পার্টনার</a>
+        <a href="https://www.instagram.com/batikcromfashion?igsh=ZjQ4ZWh5a3JsMDVn" class="btn-instagram" target="_blank" rel="noopener" aria-label="Instagram ID batikcromfashion">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 2 .2 2.4.4.6.2 1 .5 1.5 1 .4.4.7.9 1 1.5.2.4.3 1.2.4 2.4.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 2-.4 2.4-.2.6-.5 1-1 1.5-.4.4-.9.7-1.5 1-.4.2-1.2.3-2.4.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-2-.2-2.4-.4-.6-.2-1-.5-1.5-1-.4-.4-.7-.9-1-1.5-.2-.4-.3-1.2-.4-2.4C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-2 .4-2.4.2-.6.5-1 1-1.5.4-.4.9-.7 1.5-1 .4-.2 1.2-.3 2.4-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1 0-1.5.2-1.9.3-.5.2-.8.4-1.1.7-.3.3-.5.6-.7 1.1-.1.4-.3.9-.3 1.9C3.2 8.5 3.2 8.9 3.2 12s0 3.5.1 4.7c0 1 .2 1.5.3 1.9.2.5.4.8.7 1.1.3.3.6.5 1.1.7.4.1.9.3 1.9.3 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1 0 1.5-.2 1.9-.3.5-.2.8-.4 1.1-.7.3-.3.5-.6.7-1.1.1-.4.3-.9.3-1.9.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c0-1-.2-1.5-.3-1.9-.2-.5-.4-.8-.7-1.1-.3-.3-.6-.5-1.1-.7-.4-.1-.9-.3-1.9-.3-1.2-.1-1.6-.1-4.7-.1zm0 3.5a4.5 4.5 0 110 9 4.5 4.5 0 010-9zm0 1.8a2.7 2.7 0 100 5.4 2.7 2.7 0 000-5.4zm5.7-2a1.1 1.1 0 11-2.2 0 1.1 1.1 0 012.2 0z"/></svg>
+          <span class="social-btn-text"><b>Instagram ID</b><small>batikcromfashion</small></span>
+        </a>
+        <a href="dropship.html" class="btn btn-outline-dropship">🤝 ড্রোপসিপিং + ডিলারসিপিং</a>
       </div>
       <div class="badges">
         <div class="badge-item"><svg viewBox="0 0 24 24"><path d="M12 2l2.6 5.5 6 .8-4.4 4.1 1.1 6-5.3-2.9-5.3 2.9 1.1-6-4.4-4.1 6-.8z"/></svg>প্রিমিয়াম কোয়ালিটি</div>
