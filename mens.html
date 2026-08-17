@@ -334,6 +334,85 @@
   .nav-search input::placeholder{ color:#a8a196; }
   .nav-search svg{ width:16px; height:16px; stroke:#a8a196; fill:none; flex-shrink:0; }
   @media(max-width:760px){ .nav-search{ display:none; } }
+
+
+/* ---------- Mobile typography & safe side spacing ---------- */
+@media (max-width: 600px){
+  .wrap{
+    width:100%;
+    max-width:100%;
+    padding-left:18px;
+    padding-right:18px;
+  }
+
+  body{font-size:16px;}
+
+  .section-head{
+    padding-left:4px;
+    padding-right:4px;
+  }
+
+  .section-head h2{
+    font-size:clamp(1.65rem, 6vw, 2.05rem);
+    line-height:1.3;
+  }
+
+  .section-head .kicker{
+    font-size:.9rem;
+    letter-spacing:.8px;
+  }
+
+  .hero{
+    padding-left:0;
+    padding-right:0;
+  }
+
+  .hero h1{
+    font-size:clamp(2.25rem, 9vw, 3rem);
+    line-height:1.25;
+  }
+
+  .hero p.lede{
+    font-size:1.05rem;
+    line-height:1.75;
+  }
+
+  .eyebrow{font-size:1.05rem;}
+
+  .btn,
+  .btn-gold,
+  .btn-wa-lg{
+    font-size:1rem;
+  }
+
+  .badge-item{font-size:.92rem;}
+
+  .col-label{padding:14px;}
+  .col-label h3{font-size:1.08rem;}
+  .col-label span{font-size:.86rem;}
+
+  h1,h2,h3,p,a,span,button{
+    overflow-wrap:anywhere;
+  }
+
+  .hero-ctas,.badges{max-width:100%;}
+}
+
+@media (max-width: 380px){
+  .wrap{
+    padding-left:15px;
+    padding-right:15px;
+  }
+
+  .hero h1{font-size:2.05rem;}
+  .hero p.lede{font-size:1rem;}
+
+  .btn{
+    width:100%;
+    justify-content:center;
+  }
+}
+
 </style>
 <body><header>
   <nav class="nav">
